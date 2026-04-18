@@ -4,13 +4,11 @@ import dev.nurtt.dto.request.LeagueRequest;
 import dev.nurtt.dto.response.LeagueResponse;
 import dev.nurtt.service.LeagueService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/league")
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequiredArgsConstructor
 public class LeagueApi {
     private final LeagueService leagueService;

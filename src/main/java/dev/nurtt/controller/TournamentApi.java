@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/tournament")
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequiredArgsConstructor
 public class TournamentApi {
     private final TournamentService tournamentService;

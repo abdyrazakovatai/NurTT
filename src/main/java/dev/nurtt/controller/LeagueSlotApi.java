@@ -4,13 +4,11 @@ import dev.nurtt.dto.request.RegisterPlayerRequest;
 import dev.nurtt.dto.response.LeagueSlotResponse;
 import dev.nurtt.service.LeagueSlotService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/leagueSlot")
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequiredArgsConstructor
 public class LeagueSlotApi {
     private final LeagueSlotService leagueSlotService;
