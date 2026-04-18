@@ -1,0 +1,8 @@
+{
+  "build": {
+    "builder": "NIXPACKS"
+  },
+  "deploy": {
+    "startCommand": "./gradlew build && java -jar build/libs/*.jar"
+  }
+}
