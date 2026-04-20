@@ -2,14 +2,13 @@ spring:
   application:
     name: nurtt
   datasource:
-    url: jdbc:postgresql://${PGHOST}:${PGPORT}/${PGDATABASE}
-    username: ${PGUSER}
-    password: ${PGPASSWORD}
-    driver-class-name: org.postgresql.Driver
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
 
-#    url: jdbc:postgresql://localhost:5432/nur_tt
-#    username: postgres
-#    password: 1234
+    #    url: jdbc:postgresql://localhost:5432/nur_tt
+    #    username: postgres
+    #    password: 1234
 
     hikari:
       maximum-pool-size: 10
