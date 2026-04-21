@@ -1,12 +1,11 @@
-FROM openjdk:17 as build
+FROM eclipse-temurin:21-jdk AS build
 WORKDIR /app
-COPY . ./
-RUN microdnf install findutils
+COPY . .
 RUN chmod +x gradlew
 RUN ./gradlew build -x test
 
-FROM openjdk:17-slim
+FROM eclipse-temurin:21-jre
 WORKDIR /app
-COPY --from=build /app/build/libs/NurTT-0.0.1-SNAPSHOT-plain.jar .
-CMD ["java", "-jar", "NurTT-0.0.1-SNAPSHOT-plain.jar"]
-EXPOSE 2025
+COPY --from=build /app/build/libs/NurTT-0.0.1-SNAPSHOT.jar app.jar
+EXPOSE 8080
+CMD ["java", "-jar", "app.jar"]
