@@ -63,10 +63,10 @@ public class MatchServiceImpl implements MatchService {
         LeagueSlot winner;
         LeagueSlot loser;
 
-        if (request.getWinnerId().equals(match.getSlot1().getId())) {
+        if (request.getWinnerSlotId().equals(match.getSlot1().getId())) {
             winner = match.getSlot1();
             loser  = match.getSlot2();
-        } else if (request.getWinnerId().equals(match.getSlot2().getId())) {
+        } else if (request.getWinnerSlotId().equals(match.getSlot2().getId())) {
             winner = match.getSlot2();
             loser  = match.getSlot1();
         } else {

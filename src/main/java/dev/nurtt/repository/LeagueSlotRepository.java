@@ -1,6 +1,7 @@
 package dev.nurtt.repository;
 
 import dev.nurtt.model.LeagueSlot;
+import dev.nurtt.model.Player;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,4 +17,7 @@ public interface LeagueSlotRepository extends JpaRepository<LeagueSlot, Long> {
 
     List<LeagueSlot> findByLeagueIdAndActiveTrue(Long leagueId);
 
+    Player getLeagueSlotById(Long id);
+
+    LeagueSlot getLeagueSlotByPlayerId(Long id);
 }

@@ -1,6 +1,7 @@
 package dev.nurtt.service.impl;
 
 import dev.nurtt.dto.request.RegisterPlayerRequest;
+import dev.nurtt.dto.response.LeagueSlotPlayerResponse;
 import dev.nurtt.dto.response.LeagueSlotResponse;
 import dev.nurtt.exception.AlreadyExistsException;
 import dev.nurtt.exception.BadRequestException;
@@ -58,6 +59,14 @@ public class LeagueSlotServiceImpl implements LeagueSlotService {
                 player.getId(),
                 "Saved successfully"
         );
+    }
 
+    @Override
+    public LeagueSlotPlayerResponse getSlotPlayer(Long id) {
+        LeagueSlot slot = leagueSlotRepository.getLeagueSlotByPlayerId(id);
+
+        return new LeagueSlotPlayerResponse(
+                slot.getPlayer().getId(),
+                slot.getId());
     }
 }
