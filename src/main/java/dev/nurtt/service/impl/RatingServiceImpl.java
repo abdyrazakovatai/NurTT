@@ -1,5 +1,7 @@
 package dev.nurtt.service.impl;
 
+import dev.nurtt.dto.response.LeaderboardResponse;
+import dev.nurtt.dto.response.RatingHistoryResponse;
 import dev.nurtt.model.Match;
 import dev.nurtt.model.Player;
 import dev.nurtt.model.RatingHistory;
@@ -9,6 +11,8 @@ import dev.nurtt.service.RatingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional
@@ -44,6 +48,32 @@ public class RatingServiceImpl implements RatingService {
         // Применить дельту
         applyDelta(winner, match, +deltaInt);
         applyDelta(loser,  match, -deltaInt);
+    }
+
+    @Override
+    public List<LeaderboardResponse> getLeaderboard() {
+        return playerRepository.findAllByOrderByGlobalRatingDesc()
+                .stream()
+                .map(p -> LeaderboardResponse.builder()
+                        .playerId(p.getId())
+                        .fullName(p.getFullName())
+                        .globalRating(p.getGlobalRating())
+                        .build())
+                .toList();
+    }
+
+    public List<RatingHistoryResponse> getHistory(Long playerId) {
+        return ratingHistoryRepository
+                .findByPlayerIdOrderByCreatedAtDesc(playerId)
+                .stream()
+                .map(h -> RatingHistoryResponse.builder()
+                        .matchId(h.getMatch().getId())
+                        .oldRating(h.getOldRating())
+                        .newRating(h.getNewRating())
+                        .delta(h.getDelta())
+                        .createdAt(h.getCreatedAt())
+                        .build())
+                .toList();
     }
 
     // ─────────────────────────────────────

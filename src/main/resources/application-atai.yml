@@ -1,8 +1,14 @@
 spring:
   datasource:
-    url: ${DATABASE_URL}
-    username: ${PGUSER}
-    password: ${PGPASSWORD}
+
+    #    url: jdbc:postgresql://roundhouse.proxy.rlwy.net:56480/railway
+    #    username: postgres
+    #    password: jCxAHBhjmrMDZHteDjhzKOjNuhnQOcvO
+
+    url: jdbc:postgresql://localhost:5432/nur_tt
+    username: postgres
+    password: 1234
+
     hikari:
       maximum-pool-size: 10
       minimum-idle: 2
@@ -20,5 +26,11 @@ spring:
     init:
       mode: never
 
+springdoc:
+  swagger-ui:
+    enabled: true
+  api-docs:
+    enabled: true
+
 server:
-    forward-headers-strategy: framework
+  forward-headers-strategy: framework

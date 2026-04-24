@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequiredArgsConstructor
 @Tag(name = "Player", description = "Управление игроками")
-public class PlayerApi {
+public class PlayerController {
 
     private final PlayerService playerService;
 

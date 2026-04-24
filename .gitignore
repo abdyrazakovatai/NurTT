@@ -33,6 +33,7 @@ out/
 /nbdist/
 /.nb-gradle/
 
+src/main/resources/application-atai.yml
 ### VS Code ###
 .vscode/
 .gitignore

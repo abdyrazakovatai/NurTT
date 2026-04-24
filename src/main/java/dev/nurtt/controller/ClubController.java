@@ -15,8 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequiredArgsConstructor
 @Tag(name = "Club", description = "Управление клубами")
-public class ClubApi {
-
+public class ClubController {
     private final ClubService clubService;
 
     @Operation(
