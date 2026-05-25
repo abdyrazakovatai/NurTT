@@ -7,17 +7,16 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 @Configuration
 public class WebConfigurer {
-    @Bean
-    public WebMvcAutoConfiguration corsConfiguration() {
-        return new WebMvcAutoConfiguration(){
 
+    @Bean
+    public WebMvcAutoConfiguration corsConfigurer(){
+        return new WebMvcAutoConfiguration(){
             public void addCorsMappings(CorsRegistry registry){
-                registry.addMapping("/**")
-                        .allowedOrigins("*")
-                        .allowedMethods("GET", "POST","PUT","DELETE", "OPTIONS")
-                        .allowedHeaders("*");
+                registry.addMapping("/***")
+                        .allowedHeaders("*")
+                        .allowedMethods("GET", "POST", "DELETE", "OPTIONS")
+                        .allowedOrigins("*");
             }
         };
-
     }
 }
